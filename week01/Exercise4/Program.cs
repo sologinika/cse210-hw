@@ -1,9 +1,6 @@
 using System;
 
 class Program
-{
-    static void Main(string[] args);
-        class NumberList
         {
             static void Main(string[] args)
     {
