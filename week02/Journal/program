@@ -1,0 +1,121 @@
+sing System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace JournalProgram
+{
+    public class Journal
+    {
+        private List<Entry> entries = new List<Entry>();
+        private List<string> prompts = new List<string>()
+        {
+            "Who was the most interesting person I interacted with today?",
+            "What was the best part of my day?",
+            "How did I see the hand of the Lord in my life today?",
+            "What was the strongest emotion I felt today?",
+            "If I had one thing I could do over today, what would it be?"
+        };
+        private static Random random = new Random();
+
+        public void AddEntry()
+        {
+            string prompt = GetRandomPrompt();
+            string response = GetResponse(prompt);
+            if (!string.IsNullOrWhiteSpace(response))
+            {
+                string date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                Entry entry = new Entry(prompt, response, date);
+                entries.Add(entry);
+            }
+            else
+            {
+                Console.WriteLine("Response cannot be empty.");
+            }
+        }
+
+        public void DisplayEntries()
+        {
+            foreach (Entry entry in entries)
+            {
+                Console.WriteLine(entry);
+            }
+        }
+
+        public void SaveToFile()
+        {
+            Console.Write("Enter a filename: ");
+            string filename = Console.ReadLine();
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filename))
+                {
+                    foreach (Entry entry in entries)
+                    {
+                        writer.WriteLine($"{entry.Prompt}~|~{entry.Response}~|~{entry.Date}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving file: {ex.Message}");
+            }
+        }
+
+        public void LoadFromFile()
+        {
+            Console.Write("Enter a filename: ");
+            string filename = Console.ReadLine();
+            if (File.Exists(filename))
+            {
+                try
+                {
+                    entries.Clear();
+                    using (StreamReader reader = new StreamReader(filename))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            string[] parts = line.Split(new string[] { "~|~" }, StringSplitOptions.None);
+                            if (parts.Length == 3)
+                            {
+                                Entry entry = new Entry(parts[0], parts[1], parts[2]);
+                                entries.Add(entry);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid file format.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error loading file: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("File not found.");
+            }
+        }
+
+        private string GetRandomPrompt()
+        {
+            if (prompts.Count > 0)
+            {
+                return prompts[random.Next(prompts.Count)];
+            }
+            else
+            {
+                Console.WriteLine("No prompts available.");
+                return string.Empty;
+            }
+        }
+
+        private string GetResponse(string prompt)
+        {
+            Console.WriteLine(prompt);
+            return Console.ReadLine();
+        }
+    }
+}
