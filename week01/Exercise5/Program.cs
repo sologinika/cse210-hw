@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        // program written by Alagbaoso Solomon Ginikachukwu
      {
         DisplayWelcome();
         string userName = PromptUserName();
@@ -14,7 +15,7 @@ class Program
 
     static void DisplayWelcome()
     {
-        Console.WriteLine("Welcome to the Program!");
+        Console.WriteLine("Welcome to the Program by Alagbaoso Solomon Ginikachukwu!");
     }
 
     static string PromptUserName()
