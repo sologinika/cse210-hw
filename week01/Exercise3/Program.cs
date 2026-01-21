@@ -11,7 +11,7 @@ using System;
         {
             Random random = new Random();
             int magicNumber = random.Next(1, 101);
-            int guess = 0;
+             int guess = 8;
             int attempts = 0;
 
             while (guess != magicNumber)
@@ -20,13 +20,13 @@ using System;
                 guess = Convert.ToInt32(Console.ReadLine());
                 attempts++;
 
-                if (guess < magicNumber)
+                if (magicNumber < guess)
+                {
+                    Console.WriteLine("lower");
+                }
+                else if (magicNumber > guess)
                 {
                     Console.WriteLine("Higher");
-                }
-                else if (guess > magicNumber)
-                {
-                    Console.WriteLine("Lower");
                 }
                 else
                 {
