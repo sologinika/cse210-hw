@@ -4,6 +4,7 @@ class Program
         {
             static void Main(string[] args)
     {
+        //this program is written by Alagbaoso Solomon Ginikachukwu
         List<int> numbers = new List<int>();
 
                 Console.WriteLine("Enter a list of numbers, type 0 when finished.");
