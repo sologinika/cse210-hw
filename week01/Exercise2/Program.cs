@@ -5,6 +5,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        // program written by Alagbaoso Solomon Ginikachukwu.
         Console.Write("What is your grade percentage: ");
         string answer = Console.ReadLine();
         int percent = int.Parse(answer);
