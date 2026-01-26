@@ -173,7 +173,7 @@ namespace ScriptureMemorizer
         public static Scripture LoadScripture(string filename)
         {
             // Load a random scripture from the file
-            string[] lines = File.ReadAllLines(filename.txt);
+            string[] lines = File.ReadAllLines(filename);
             Random random = new Random();
             string line = lines[random.Next(lines.Length)];
             string[] parts = line.Split('|');
