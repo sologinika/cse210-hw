@@ -6,6 +6,9 @@ namespace JournalProgram
         static void Main(string[] args)
         {
             Journal journal = new Journal();
+            Entry anEntry = new Entry();
+            anEntry.Display(anEntry);
+            
             bool running = true;
 
             while (running)
