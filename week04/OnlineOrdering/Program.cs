@@ -1,12 +1,8 @@
-using System;
 
-class orderingProgram
-{
-    static void Main (string[] args)
-    {
-        Console.WriteLine("Online Ordering System");
-         }
-        // Address class
+using System;
+using System.Collections.Generic;
+
+// Address class
 public class Address
 {
     private string street;
@@ -137,7 +133,7 @@ public class Order
     }
 }
 
-class orderingProgram
+class Program
 {
     static void Main(string[] args)
     {
@@ -179,5 +175,3 @@ class orderingProgram
         Console.WriteLine($"Total Price: ${order2.GetTotalPrice()}");
     }
 }
-
-    }
