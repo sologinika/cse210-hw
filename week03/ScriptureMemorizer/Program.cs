@@ -169,7 +169,7 @@ namespace ScriptureMemorizer
 namespace ScriptureMemorizer
 {
     public class ScriptureLoader
-    {
+    { 
         public static Scripture LoadScripture(string filename)
         {
             // Load a random scripture from the file
@@ -181,7 +181,7 @@ namespace ScriptureMemorizer
             string text = parts[1];
             return new Scripture(reference, text);
         }
-
+   
         private static Reference ParseReference(string referenceString)
         {
             // Parse the reference string into a Reference object
@@ -202,4 +202,4 @@ namespace ScriptureMemorizer
             }
         }
     }
-}
+ }
